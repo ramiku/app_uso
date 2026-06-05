@@ -1,6 +1,12 @@
 <?php
 declare(strict_types=1);
 
+// ── DIAGNÓSTICO TEMPORAL — eliminar tras identificar el error ──
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+// ──────────────────────────────────────────────────────────────
+
 /* ──────────────────────────────────────────────────────────────────────────
    uso_admin.php — Panel de administración USO OEST
    Punto de entrada delgado: bootstrap → acción → datos → vista
