@@ -367,6 +367,3 @@ Definidas en app/config/config.php (se recomienda mover credenciales sensibles a
 ## 10) Documentación adicional
 
 - Ver docs/ADMIN_CONTEXT.md para contexto técnico y operativo ampliado del panel.
-#   w e b _ u s o 
- 
- 
