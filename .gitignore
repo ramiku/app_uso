@@ -12,3 +12,8 @@ vendor/
 # Archivos del sistema u otros (Opcional, pero muy recomendado)
 .DS_Store
 Thumbs.db
+
+# Archivos de entorno (si los usas, aunque es mejor mantenerlos fuera del proyecto)
+composer.lock
+composer.json
+.env
