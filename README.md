@@ -1,6 +1,6 @@
 ﻿# USO OEST — Aplicación Web y Android
 
-Aplicación multiplataforma desarrollada para la **sección sindical del sindicato USO** dentro de la empresa **OEST (Operadora de Estaciones de Servicio en el Territorio)**, con el objetivo de centralizar la comunicación interna, el acceso a documentación laboral, calendarios de turno y un asistente virtual de orientación sindical, tanto desde la web como desde dispositivos Android.
+Aplicación multiplataforma desarrollada para la **sección sindical del sindicato USO** dentro de la empresa **OEST**, con el objetivo de centralizar la comunicación interna, el acceso a documentación laboral, calendarios de turno y un asistente virtual de orientación sindical, tanto desde la web como desde dispositivos Android.
 
 ---
 
@@ -284,7 +284,8 @@ El asistente combina **respuestas predefinidas por comandos** con **inteligencia
   - URLs de secciones del sitio.
 - **Modo IA** — Si el comando no se reconoce y el modo IA está activo:
   - Acceso restringido a afiliados mediante **código de seguridad** de sesión (válido 24 horas).
-  - Una vez validado, envía la consulta a **OpenAI GPT-4o** con un *prompt* y *vector store* configurados en el panel de OpenAI, orientados al ámbito sindical y laboral de USO OEST.
+  - Temporalmente el acceso es libre durante los primeros meses de uso de la herramienta.
+  - Una vez validado, envía la consulta a **Assistant de OpenAI** con un *prompt* y *vector store* configurados en el panel de OpenAI, orientados al ámbito sindical y laboral de USO OEST.
   - Mantiene contexto de la conversación (hasta 5 mensajes anteriores).
 - **Registro de consultas** — Las consultas se registran en base de datos para análisis posterior.
 
