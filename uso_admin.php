@@ -2,9 +2,23 @@
 declare(strict_types=1);
 
 // ── DIAGNÓSTICO TEMPORAL — eliminar tras identificar el error ──
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
+ini_set('log_errors', '1');
+ini_set('error_log', __DIR__ . '/debug_error.log');
 error_reporting(E_ALL);
+register_shutdown_function(function (): void {
+    $err = error_get_last();
+    if ($err !== null && in_array($err['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR], true)) {
+        file_put_contents(
+            __DIR__ . '/debug_error.log',
+            date('[Y-m-d H:i:s] ') . 'FATAL: ' . $err['message'] . ' en ' . $err['file'] . ':' . $err['line'] . PHP_EOL,
+            FILE_APPEND
+        );
+        echo '<pre style="background:#fff;color:red;padding:1em;font-size:14px">'
+            . 'ERROR FATAL: ' . htmlspecialchars($err['message'])
+            . ' en ' . htmlspecialchars($err['file']) . ':' . $err['line']
+            . '</pre>';
+    }
+});
 // ──────────────────────────────────────────────────────────────
 
 /* ──────────────────────────────────────────────────────────────────────────
