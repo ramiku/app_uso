@@ -232,19 +232,6 @@ webuso/
 │           ├── *.pdf / *.docx       ← Documentos laborales descargables
 │           └── calendarios/         ← Documentos de calendarios descargables
 │
-├── docs/                            ← Documentación técnica interna
-│   ├── ADMIN_CONTEXT.md             ← Contexto técnico del panel de administración
-│   ├── CALENDAR_DDL.sql             ← DDL de las tablas de calendarios
-│   ├── PUSH_DDL.sql                 ← DDL de la tabla app_push_tokens (FCM)
-│   ├── web_push_setup.md            ← Guía de instalación y configuración Web Push
-│   └── android/                     ← Código de referencia de la app Android
-│       ├── AndroidManifest.xml
-│       ├── MainActivity.java
-│       └── MyFirebaseMessagingService.java
-│
-├── private/                         ← Scripts de utilidad (fuera de acceso web)
-│   └── generate_vapid_keys.php      ← Generador de claves VAPID (uso único por CLI)
-│
 └── vendor/                          ← Dependencias Composer (no se versiona)
 ```
 
@@ -480,10 +467,7 @@ El sistema implementa un **canal doble** para garantizar la cobertura en todos l
 | `app_push_tokens` | Tokens FCM de dispositivos Android |
 | `web_push_subscriptions` | Suscripciones Web Push VAPID de navegadores |
 
-Los DDL completos se encuentran en:
-- `docs/CALENDAR_DDL.sql`
-- `docs/PUSH_DDL.sql`
-- `docs/web_push_setup.md` (sección 1, tabla `web_push_subscriptions`)
+Los DDL completos se encuentran disponibles para los administradores del proyecto en la documentación técnica interna (no expuesta públicamente).
 
 ---
 
@@ -544,18 +528,14 @@ git clone https://github.com/usuario/webuso.git C:/xampp/htdocs/webuso
 cd C:/xampp/htdocs/webuso
 composer install
 
-# 3. Crear el fichero de configuración local (fuera del project root)
-# Copiar y rellenar con los valores reales:
-# C:/xampp/private/config_variables.php
+# 3. Crear el fichero de configuración local fuera del document root
+# y rellenarlo con los valores reales de DB, SMTP, VAPID y Firebase.
 
-# 4. Generar claves VAPID (solo la primera vez)
-php private/generate_vapid_keys.php
-# Guardar el resultado en C:/xampp/private/vapid-keys.json
+# 4. Generar claves VAPID (solo la primera vez) y guardar el resultado
+# en el fichero de claves fuera del document root.
 
-# 5. Importar el esquema de base de datos en phpMyAdmin o cliente MySQL:
-#   docs/CALENDAR_DDL.sql
-#   docs/PUSH_DDL.sql
-#   (+ DDL de web_push_subscriptions del archivo docs/web_push_setup.md)
+# 5. Importar el esquema de base de datos en phpMyAdmin o cliente MySQL
+# (DDL disponible en la documentación técnica interna del proyecto).
 
 # 6. Iniciar Apache y MySQL desde el panel de XAMPP
 
@@ -587,11 +567,12 @@ El sitio está alojado en un servidor **Plesk (SiteGround)** con PHP 8.x y MySQL
 
 ## 14. Documentación técnica adicional
 
-| Documento | Contenido |
-|---|---|
-| `docs/ADMIN_CONTEXT.md` | Flujos internos, decisiones de diseño y mantenimiento del panel |
-| `docs/CALENDAR_DDL.sql` | DDL completo de las tablas de calendarios de turno |
-| `docs/PUSH_DDL.sql` | DDL de la tabla de tokens FCM (app Android) |
-| `docs/web_push_setup.md` | Guía completa de instalación y configuración Web Push VAPID |
-| `docs/android/` | Código fuente de referencia de la app Android wrapper |
+El proyecto incluye documentación técnica interna de acceso restringido que cubre:
+
+- Flujos internos y decisiones de diseño del panel de administración.
+- DDL completo de todas las tablas de la base de datos.
+- Guía de instalación y configuración de Web Push VAPID.
+- Código fuente de referencia de la app Android wrapper.
+
+Esta documentación no se expone públicamente y está disponible únicamente para los desarrolladores y administradores del proyecto.
 
