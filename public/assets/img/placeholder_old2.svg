@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Imagen estándar de noticia (USO)">
+  <title>USO · Noticia (placeholder)</title>
+
+  <defs>
+    <style>
+      :root{
+        --uso-red: #E30613;
+        --uso-red-soft: rgba(227,6,19,0.10);
+        --paper: #FFFFFF;
+        --paper-2: #F4F6F8;
+
+        --skeleton: rgba(17,17,17,0.16);
+        --skeleton-soft: rgba(17,17,17,0.10);
+
+        --shadow: rgba(0,0,0,0.18);
+        --stroke: rgba(17,17,17,0.10);
+      }
+
+      @keyframes shimmerMove {
+        0%   { transform: translateX(-60%); }
+        100% { transform: translateX(160%); }
+      }
+      .shimmer { animation: shimmerMove 1.6s ease-in-out infinite; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .shimmer { animation: none; opacity: 0.16; }
+      }
+    </style>
+
+    <!-- Fondo -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="var(--paper)"></stop>
+      <stop offset="1" stop-color="var(--paper-2)"></stop>
+    </linearGradient>
+
+    <!-- Brillo -->
+    <linearGradient id="shimmerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="rgba(255,255,255,0)"></stop>
+      <stop offset="0.45" stop-color="rgba(255,255,255,0.10)"></stop>
+      <stop offset="0.55" stop-color="rgba(255,255,255,0.38)"></stop>
+      <stop offset="0.65" stop-color="rgba(255,255,255,0.10)"></stop>
+      <stop offset="1" stop-color="rgba(255,255,255,0)"></stop>
+    </linearGradient>
+
+    <!-- Sombra -->
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="var(--shadow)"></feDropShadow>
+    </filter>
+
+    <!-- Clip shimmer -->
+    <clipPath id="contentClip">
+      <circle cx="340" cy="310" r="120"></circle>
+      <rect x="520" y="250" rx="18" ry="18" width="880" height="56"></rect>
+      <rect x="520" y="335" rx="16" ry="16" width="760" height="44"></rect>
+      <rect x="520" y="410" rx="16" ry="16" width="660" height="42"></rect>
+      <rect x="520" y="485" rx="16" ry="16" width="540" height="40"></rect>
+      <rect x="520" y="585" rx="34" ry="34" width="330" height="78"></rect>
+    </clipPath>
+  </defs>
+
+  <!-- Fondo base -->
+  <rect width="1600" height="900" fill="url(#bgGrad)"></rect>
+
+  <!-- ===== Dos líneas diagonales anchas ===== -->
+  <g opacity="0.9">
+    <rect x="-400" y="150" width="2400" height="120" fill="var(--uso-red-soft)" transform="rotate(-25 800 450)"></rect>
+    <rect x="-400" y="600" width="2400" height="120" fill="var(--uso-red-soft)" transform="rotate(-25 800 450)"></rect>
+  </g>
+
+  <!-- Tarjeta principal -->
+  <g filter="url(#softShadow)">
+    <rect x="140" y="160" width="1320" height="600" rx="34" ry="34" fill="#FFFFFF"></rect>
+    <rect x="140" y="160" width="1320" height="600" rx="34" ry="34" fill="none" stroke="var(--stroke)" stroke-width="2"></rect>
+
+    <!-- Línea superior roja -->
+    <rect x="140" y="160" width="1320" height="14" rx="7" ry="7" fill="var(--uso-red)"></rect>
+
+    <!-- Avatar -->
+    <circle cx="340" cy="310" r="120" fill="var(--skeleton)"></circle>
+
+    <!-- Líneas -->
+    <rect x="520" y="250" rx="18" ry="18" width="880" height="56" fill="var(--skeleton)"></rect>
+    <rect x="520" y="335" rx="16" ry="16" width="760" height="44" fill="var(--skeleton-soft)"></rect>
+    <rect x="520" y="410" rx="16" ry="16" width="660" height="42" fill="var(--skeleton-soft)"></rect>
+    <rect x="520" y="485" rx="16" ry="16" width="540" height="40" fill="var(--skeleton-soft)"></rect>
+
+    <!-- CTA -->
+    <rect x="520" y="585" rx="34" ry="34" width="330" height="78" fill="var(--uso-red)"></rect>
+    <text x="685" y="637" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="34" font-weight="800" fill="#FFFFFF">
+      Te interesa
+    </text>
+  </g>
+
+  <!-- Shimmer -->
+  <g clip-path="url(#contentClip)">
+    <g class="shimmer">
+      <rect x="-980" y="120" width="980" height="680" fill="url(#shimmerGrad)" transform="skewX(-18)"></rect>
+    </g>
+  </g>
+
+  <!-- Borde exterior -->
+  <rect x="18" y="18" width="1564" height="864" rx="28" ry="28" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="2"></rect>
+</svg>

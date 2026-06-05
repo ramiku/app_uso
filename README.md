@@ -5,8 +5,10 @@ Aplicación web modular para USO OEST con sitio público y panel administrativo 
 Estado actual del proyecto:
 - Noticias dinámicas desde base de datos.
 - Sección Documentación dinámica desde base de datos.
+- Calendarios de turnos dinámicos gestionados desde el panel.
 - Asistente virtual con modo reglas + modo IA con acceso premium por código.
 - Panel administrativo con autenticación, CRUD de noticias, gestión documental, gestión de imágenes y recuperación de contraseña.
+- Notificaciones push doble canal: FCM para la app Android y Web Push (VAPID) para navegadores.
 
 ---
 
@@ -39,20 +41,37 @@ Estado actual del proyecto:
 ├─ .htaccess
 ├─ README.md
 ├─ docs/
-│  └─ ADMIN_CONTEXT.md
+│  ├─ ADMIN_CONTEXT.md
+│  ├─ CALENDAR_DDL.sql
+│  ├─ PUSH_DDL.sql
+│  ├─ web_push_setup.md
+│  └─ android/            ← referencia para el wrapper Android
+├─ private/
+│  └─ generate_vapid_keys.php  ← uso único (CLI), fuera del web root
 ├─ app/
 │  ├─ api/
 │  │  ├─ assistant.php
+│  │  ├─ calendars.php       ← API REST del calendario (admin)
 │  │  ├─ contact.php
+│  │  ├─ enviar_web_push.php
+│  │  ├─ guardar_token_push.php
+│  │  ├─ guardar_web_push_subscription.php
+│  │  └─ news_share.php
 │  ├─ config/
 │  ├─ controllers/
 │  ├─ helpers/
+│  │  ├─ FcmSender.php
+│  │  ├─ functions.php
+│  │  └─ push_helpers.php
+│  ├─ lib/
+│  │  └─ WebPushSender.php
 │  └─ views/
 │     ├─ components/
 │     ├─ layouts/
 │     ├─ pages/
 │     └─ partials/
 └─ public/
+    ├─ push-sw.js            ← Service Worker Web Push
     └─ assets/
          ├─ css/
          ├─ files/
@@ -179,7 +198,15 @@ Estado actual del proyecto:
 - Alcance: solo imágenes de public/assets/img/noticias.
 - Vista tipo galería con miniatura, tamaño, fecha y acción de borrado.
 
-### 5.7 UI del panel
+### 5.7 Notificaciones push
+- Menú principal → Notificaciones push.
+- Envío de notificación personalizada (título, mensaje, URL opcional) a todos los destinatarios.
+- Doble canal de envío unificado (función `enviarNotificacionUnificada`):
+   - FCM (Firebase Cloud Messaging): app Android con wrapper nativo.
+   - Web Push (VAPID): navegadores con suscripción activa.
+- Desde la vista de edición de una noticia se puede enviar notificación push específica de esa noticia.
+
+### 5.8 UI del panel
 - Rediseño visual para alinearse con estética USO.
 - Cabecera tipo web principal con navegación por secciones.
 - Tarjetas de menú con iconos y estilo minimalista.
@@ -247,6 +274,33 @@ Campos:
 - mime_type
 - created_at
 
+### 6.7 Tabla app_push_tokens (FCM Android)
+Campos:
+- id
+- id_usuario (identificador de dispositivo o 'admin:ID')
+- token_fcm
+- plataforma (android)
+- activo (0/1)
+- user_agent
+- fecha_alta
+- fecha_ultima_actualizacion
+- DDL: docs/PUSH_DDL.sql
+
+### 6.8 Tabla web_push_subscriptions (Web Push VAPID)
+Campos:
+- id
+- usuario
+- endpoint
+- endpoint_hash (sha256 del endpoint, único)
+- p256dh
+- auth
+- user_agent
+- plataforma
+- fecha_alta
+- fecha_ultima
+- activo (0/1)
+- DDL: docs/web_push_setup.md sección 1
+
 ---
 
 ## 7) Variables de configuración
@@ -269,6 +323,11 @@ Definidas en app/config/config.php (se recomienda mover credenciales sensibles a
 - OPENAI_PROMPT_ID
 - OPENAI_PROMPT_VERSION
 - OPENAI_VECTOR_STORE_ID
+- WEB_PUSH_VAPID_PUBLIC_KEY (clave pública VAPID para Web Push)
+- WEB_PUSH_VAPID_PRIVATE_KEY (clave privada VAPID, nunca en código)
+- WEB_PUSH_VAPID_SUBJECT (mailto del administrador VAPID)
+- FIREBASE_SERVICE_ACCOUNT_PATH (ruta absoluta al JSON service account FCM, fuera del web root)
+- PUSH_API_SECRET (clave interna opcional para /api/enviar_web_push.php sin sesión admin)
 
 ---
 
@@ -280,6 +339,18 @@ Definidas en app/config/config.php (se recomienda mover credenciales sensibles a
 - app/api/assistant.php
    - POST
    - Comandos del asistente, validación premium y respuestas IA.
+- app/api/guardar_token_push.php
+   - POST
+   - Registra token FCM de dispositivo Android (llamado desde head.php vía JS).
+- app/api/guardar_web_push_subscription.php
+   - POST
+   - Registra suscripción Web Push (VAPID) de navegadores.
+- app/api/enviar_web_push.php
+   - POST
+   - Envía notificación Web Push a todos los suscriptores activos.
+- app/api/news_share.php
+   - GET/POST
+   - Comparte noticia (genera URL de compartición social).
 
 ---
 
@@ -296,5 +367,6 @@ Definidas en app/config/config.php (se recomienda mover credenciales sensibles a
 ## 10) Documentación adicional
 
 - Ver docs/ADMIN_CONTEXT.md para contexto técnico y operativo ampliado del panel.
-#   w e b _ u s o  
+#   w e b _ u s o 
+ 
  

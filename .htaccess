@@ -1,0 +1,18 @@
+RewriteEngine On
+
+# Service Worker Web Push: accesible desde la raíz para scope /
+RewriteRule ^push-sw\.js$ public/push-sw.js [L]
+
+# Redirige / a index.php
+RewriteRule ^$ index.php [L]
+
+# URL amigable de administración: /uso_admin/... -> uso_admin.php?admin_path=...
+RewriteRule ^uso_admin(?:/(.*))?$ uso_admin.php?admin_path=$1 [QSA,L]
+
+# API interna: /api/archivo.php -> app/api/archivo.php
+RewriteRule ^api/([\w\-\.]+\.php)$ app/api/$1 [L]
+
+# URL amigable: cualquier ruta pública -> index.php?path=...
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ index.php?path=$1 [QSA,L]

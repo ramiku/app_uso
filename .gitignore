@@ -1,0 +1,14 @@
+# Dependencias de Composer
+vendor/
+
+# Herramientas de IA y asistentes (Cachés, logs y configs locales)
+.agents/
+.augment/
+.claude/
+
+# Configuración local de VS Code
+.vscode/
+
+# Archivos del sistema u otros (Opcional, pero muy recomendado)
+.DS_Store
+Thumbs.db

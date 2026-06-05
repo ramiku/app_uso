@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Imagen de marcador de posición">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <circle cx="240" cy="170" r="65" fill="rgba(255,255,255,0.22)"/>
+  <rect x="160" y="280" width="880" height="24" rx="12" fill="rgba(255,255,255,0.34)"/>
+  <rect x="160" y="320" width="740" height="18" rx="9" fill="rgba(255,255,255,0.25)"/>
+  <rect x="160" y="360" width="620" height="18" rx="9" fill="rgba(255,255,255,0.25)"/>
+  <rect x="160" y="430" width="190" height="48" rx="24" fill="#1d4ed8"/>
+  <text x="186" y="460" font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#ffffff" font-weight="700">Destacado</text>
+</svg>

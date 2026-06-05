@@ -1,0 +1,109 @@
+<svg width="120" height="135" viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e6e6e6"/>
+    </linearGradient>
+
+    <style>
+      @keyframes hop {
+        0%, 12%, 100% { transform: translateY(0); }
+        6% { transform: translateY(-18px); }
+      }
+      @keyframes wave {
+        0%, 18%, 100% { transform: rotate(-10deg); }
+        6% { transform: rotate(-55deg); }
+        12% { transform: rotate(-25deg); }
+      }
+      @keyframes wink {
+        0%, 30%, 100% { transform: scaleY(1); }
+        20% { transform: scaleY(0.15); }
+        22% { transform: scaleY(1); }
+      }
+      @keyframes usoBlink {
+        0%, 40%, 100% { opacity: 1; }
+        34% { opacity: 0.3; }
+        36% { opacity: 1; filter: drop-shadow(0 0 6px #E30613); }
+      }
+      @keyframes capeFlap {
+        0%, 100% { transform: rotate(0deg) translateX(0); }
+        50% { transform: rotate(3deg) translateX(-6px); }
+      }
+
+      #robot { transform-origin: 200px 250px; animation: hop 6s ease-in-out infinite; }
+      #armR { transform-origin: 285px 235px; animation: wave 6s ease-in-out infinite; }
+      #eyeR { transform-origin: 220px 138px; animation: wink 6s ease-in-out infinite; }
+      #usoGroup { animation: usoBlink 6s linear infinite; }
+      #cape { transform-origin: 200px 180px; animation: capeFlap 3s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <g id="robot">
+
+    <ellipse cx="200" cy="405" rx="75" ry="18" fill="rgba(0,0,0,0.08)"/>
+
+    <g id="cape">
+      <path d="M120,175 Q200,135 280,175 Q250,195 200,198 Q150,195 120,175 Z"
+            fill="#E30613"/>
+
+      <path d="M120,180
+               Q70,230 85,340
+               Q95,420 170,430
+               Q190,432 200,405
+               Q210,432 230,430
+               Q305,420 315,340
+               Q330,230 280,180
+               Q245,215 200,215
+               Q155,215 120,180 Z"
+            fill="#E30613"/>
+
+      <path d="M135,200
+               Q105,250 115,330
+               Q125,380 170,390
+               Q150,340 155,280
+               Q160,230 135,200 Z"
+            fill="#ff4a4a"
+            opacity="0.25"/>
+    </g>
+
+    <rect x="85" y="215" width="60" height="95" rx="30" fill="url(#bodyGrad)" transform="rotate(10 115 230)" />
+    <rect id="armR" x="255" y="215" width="60" height="95" rx="30" fill="url(#bodyGrad)" transform="rotate(-10 285 230)" />
+
+    <path d="M95,210
+             Q95,150 200,150
+             Q305,150 305,210
+             L305,310
+             Q305,380 200,380
+             Q95,380 95,310 Z"
+          fill="url(#bodyGrad)"/>
+
+    <rect x="120" y="70" width="160" height="120" rx="60"
+          fill="url(#bodyGrad)" stroke="#eee" stroke-width="1"/>
+
+    <path d="M205,86
+             C190,88 187,100 198,106
+             C212,114 207,130 193,128
+             C182,126 180,116 186,112"
+          fill="none" stroke="#1b1b1b" stroke-width="6" stroke-linecap="round"/>
+
+    <rect x="150" y="110" width="100" height="55" rx="27" fill="#111"/>
+
+    <circle cx="180" cy="138" r="10" fill="#fff"/>
+    <circle id="eyeR" cx="220" cy="138" r="10" fill="#fff"/>
+
+    <g id="chest-display">
+      <rect x="150" y="205" width="100" height="85" rx="20" fill="#111"/>
+      <rect x="160" y="215" width="80" height="65" rx="15" fill="#fff"/>
+
+      <g id="usoGroup">
+        <text x="200" y="255"
+              font-family="sans-serif"
+              font-weight="900"
+              font-size="28"
+              text-anchor="middle"
+              fill="#E30613">USO</text>
+      </g>
+    </g>
+
+  </g>
+</svg>

@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" role="img" aria-label="Banner BOT USO - Consultas laborales"
+     preserveAspectRatio="xMidYMid slice" style="width:100%;height:auto;display:block">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#f03f35"/>
+      <stop offset="55%"  stop-color="#d9372f"/>
+      <stop offset="100%" stop-color="#f03f35"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="75%" cy="40%" r="75%">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="55%"  stop-color="#000000" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.10"/>
+    </linearGradient>
+    <linearGradient id="btn" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f6f6f6"/>
+    </linearGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity="0.30"/>
+    </filter>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .t1   { font: 800 44px/1.1  system-ui, Arial; letter-spacing: -.3px; }
+      .t2   { font: 500 20px/1.35 system-ui, Arial; }
+      .t3   { font: 800 18px/1   system-ui, Arial; letter-spacing: .2px; }
+      .badge{ font: 900 13px/1   system-ui, Arial; letter-spacing: 1px;  }
+
+      @keyframes drift  { from{transform:translateX(-140px)} to{transform:translateX(140px)} }
+      @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+      @keyframes pulse  { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+      @keyframes shine  { from{transform:translateX(-140px)} to{transform:translateX(420px)} }
+
+      /* Clases de animación — SIN transform attr en el mismo elemento */
+      .robot-float { animation: floatY 3s ease-in-out infinite; }
+      .btn-pulse   { animation: pulse 2.2s ease-in-out infinite; transform-origin: 205px 268px; }
+      .stripe-move { animation: drift  12s linear infinite; }
+      .card-shine  { animation: shine 3.6s ease-in-out infinite; }
+
+      @media (prefers-reduced-motion: reduce){
+        .robot-float,.btn-pulse,.stripe-move,.card-shine{ animation:none!important; }
+      }
+    </style>
+  </defs>
+
+  <!-- FONDO -->
+  <rect width="1200" height="320" fill="url(#bg)"/>
+  <rect width="1200" height="320" fill="url(#glow)" opacity="0.85"/>
+
+  <!-- RAYAS DIAGONALES -->
+  <g opacity="0.18">
+    <g class="stripe-move">
+      <path d="M-260 310 L170  -40" stroke="#fff" stroke-width="24" stroke-linecap="round"/>
+      <path d="M-30  360 L400  -40" stroke="#000" stroke-width="14" stroke-linecap="round" opacity="0.55"/>
+      <path d="M240  380 L670  -40" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity="0.55"/>
+      <path d="M520  380 L950  -40" stroke="#000" stroke-width="10" stroke-linecap="round" opacity="0.42"/>
+      <path d="M790  380 L1220 -40" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity="0.38"/>
+    </g>
+  </g>
+
+  <!-- TARJETA DE TEXTO — ancho reducido a 660 para no solapar el robot -->
+  <g filter="url(#softShadow)">
+    <rect x="54" y="46" width="660" height="228" rx="24" fill="url(#card)" stroke="#fff" stroke-opacity="0.22"/>
+  </g>
+  <clipPath id="cardClip">
+    <rect x="54" y="46" width="660" height="228" rx="24"/>
+  </clipPath>
+  <g clip-path="url(#cardClip)" opacity="0.18">
+    <path class="card-shine" d="M0 40 L90 40 L260 260 L170 260 Z" fill="#fff"/>
+  </g>
+
+  <!-- BADGE -->
+  <rect x="90" y="74" width="270" height="30" rx="15" fill="#000" opacity="0.78"/>
+  <text x="225" y="95" text-anchor="middle" class="badge" fill="#fff">ASISTENTE VIRTUAL USO</text>
+
+  <!-- TITULARES -->
+  <text x="90" y="158" class="t1" fill="#fff">Resuelve tus dudas con el</text>
+  <text x="90" y="198" class="t1" fill="#fff" opacity="0.98">ASISTENTE VIRTUAL DE USO</text>
+  <text x="90" y="232" class="t2" fill="#fff" opacity="0.92">Acceso rápido y lenguaje claro.</text>
+
+  <!-- BOTÓN CTA -->
+  <g class="btn-pulse">
+    <rect x="90" y="252" width="230" height="46" rx="14" fill="url(#btn)"/>
+    <rect x="90" y="252" width="230" height="46" rx="14" fill="none" stroke="#000" stroke-opacity="0.25"/>
+    <text x="205" y="281" text-anchor="middle" class="t3" fill="#000">ABRIR ASISTENTE</text>
+  </g>
+
+  <!-- NOTA -->
+  <text x="90" y="315" font-family="system-ui,Arial" font-size="12" fill="#fff" opacity="0.70">
+    * Información generada por IA. Si tu caso es complejo o necesitas asesoramiento, contacta con nosotros y te ayudaremos.
+  </text>
+
+  <!-- ═══════════════════════════════════════════════════════
+       ROBOT — posicionado a la derecha
+       
+       Análisis de coordenadas internas del robot:
+         · Mano izq: cx=98   → extremo izquierdo ~86
+         · Mano der: cx=242  → extremo derecho  ~254
+         · Antena top: cy=10 → extremo superior
+         · Sombra:  cy=258   → extremo inferior
+         · Ancho total: ~168px  Centro interno: x≈170
+       
+       Para centrar el robot en x=990 (banda derecha 740-1140):
+         translate = 990 - 170 = 820
+       Con margen derecho: translate(820, 28)
+       
+       SOLUCIÓN AL BUG: transform SVG y CSS animation no pueden
+       coexistir en el MISMO elemento. Se usan DOS <g> anidados:
+         · <g transform="translate(...)"> → posición estática (SVG attr)
+         · <g class="robot-float">        → animación CSS (sin transform attr)
+  ═══════════════════════════════════════════════════════ -->
+
+  <g transform="translate(820 28)">
+    <g class="robot-float">
+
+      <!-- Sombra elíptica -->
+      <ellipse cx="170" cy="258" rx="82" ry="13" fill="#000" opacity="0.18"/>
+
+      <!-- Aura de fondo -->
+      <circle cx="170" cy="130" r="108" fill="#fff" opacity="0.09" filter="url(#softGlow)"/>
+      <circle cx="170" cy="130" r="76"  fill="#000" opacity="0.07"/>
+
+      <!-- CUERPO -->
+      <path d="M112 138 C97 160,94 188,101 212 C112 254,138 272,170 272
+               C202 272,228 254,239 212 C246 188,243 160,228 138
+               C216 118,195 108,170 108 C145 108,124 118,112 138Z"
+            fill="#fff" opacity="0.98"/>
+      <path d="M112 138 C97 160,94 188,101 212 C112 254,138 272,170 272
+               C202 272,228 254,239 212 C246 188,243 160,228 138
+               C216 118,195 108,170 108 C145 108,124 118,112 138Z"
+            fill="none" stroke="#000" stroke-opacity="0.10" stroke-width="2"/>
+
+      <!-- CABEZA -->
+      <rect x="108" y="42" width="124" height="92" rx="46" fill="#fff" opacity="0.98"/>
+      <rect x="108" y="42" width="124" height="92" rx="46" fill="none" stroke="#000" stroke-opacity="0.10" stroke-width="2"/>
+
+      <!-- Antena -->
+      <line x1="170" y1="38" x2="170" y2="26" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="170" cy="18" r="8" fill="#000" opacity="0.9">
+        <animate attributeName="opacity" values="0.35;0.9;0.35" dur="1.6s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Ojos -->
+      <circle cx="148" cy="82" r="7" fill="#000"/>
+      <circle cx="192" cy="82" r="7" fill="#000"/>
+
+      <!-- Párpado izq — parpadeo suave -->
+      <rect x="138" y="74" width="20" height="16" rx="8" fill="#fff" opacity="0">
+        <animate attributeName="opacity" values="0;0;1;0;0"
+                 keyTimes="0;0.88;0.90;0.92;1" dur="6s" repeatCount="indefinite"/>
+      </rect>
+      <!-- Párpado der — guiño -->
+      <rect x="182" y="74" width="20" height="16" rx="8" fill="#fff" opacity="0">
+        <animate attributeName="opacity" values="0;0;1;0;0"
+                 keyTimes="0;0.70;0.73;0.76;1" dur="7s" repeatCount="indefinite"/>
+      </rect>
+
+      <!-- Sonrisa -->
+      <path d="M152 98 C162 110,178 110,188 98"
+            fill="none" stroke="#000" stroke-width="4" stroke-linecap="round" opacity="0.85"/>
+
+      <!-- Mofletes -->
+      <circle cx="132" cy="96" r="6" fill="#f03f35" opacity="0.22"/>
+      <circle cx="208" cy="96" r="6" fill="#f03f35" opacity="0.22"/>
+
+      <!-- Pantalla pecho -->
+      <rect x="132" y="152" width="76" height="40" rx="16" fill="#000" opacity="0.92"/>
+      <text x="170" y="182" text-anchor="middle"
+            font-family="system-ui,Arial" font-weight="900" font-size="28" fill="#f03f35">USO</text>
+      <rect x="132" y="152" width="76" height="40" rx="16" fill="#f03f35" opacity="0.10">
+        <animate attributeName="opacity" values="0.06;0.22;0.06" dur="2.3s" repeatCount="indefinite"/>
+      </rect>
+
+      <!-- Brazos -->
+      <path d="M112 168 C82 168,74 210,104 216"  fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round"/>
+      <path d="M228 168 C258 168,266 210,236 216" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round"/>
+      <!-- Manitas -->
+      <circle cx="98"  cy="216" r="12" fill="#fff" opacity="0.98" stroke="#000" stroke-opacity="0.08"/>
+      <circle cx="242" cy="216" r="12" fill="#fff" opacity="0.98" stroke="#000" stroke-opacity="0.08"/>    
+
+    </g><!-- /robot-float -->
+  </g><!-- /translate(820 28) -->
+
+</svg>
