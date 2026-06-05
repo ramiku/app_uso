@@ -17,3 +17,6 @@ Thumbs.db
 composer.lock
 composer.json
 .env
+
+
+docs/
