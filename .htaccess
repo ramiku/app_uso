@@ -1,4 +1,3 @@
-Options +FollowSymLinks -MultiViews
 RewriteEngine On
 
 # Service Worker Web Push: accesible desde la raíz para scope /

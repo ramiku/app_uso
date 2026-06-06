@@ -1,0 +1,24 @@
+[25-Apr-2026 23:49:12 UTC] [test_push] Error: firebase-service-account.json no encontrado en: /var/www/vhosts/uso-oest.es/private/firebase-service-account.json
+[25-Apr-2026 23:57:48 UTC] PHP Fatal error:  Uncaught TypeError: is_file(): Argument #1 ($filename) must be of type string, bool given in /home/customer/www/uso-oest.es/public_html/app/api/test_push.php:111
+Stack trace:
+#0 /home/customer/www/uso-oest.es/public_html/app/api/test_push.php(111): is_file(false)
+#1 {main}
+  thrown in /home/customer/www/uso-oest.es/public_html/app/api/test_push.php on line 111
+[26-Apr-2026 00:00:17 UTC] [test_push] Error: El archivo de service account no contiene JSON válido.
+[26-Apr-2026 00:01:26 UTC] [test_push] Error: El archivo de service account no contiene JSON válido.
+[26-Apr-2026 00:02:45 UTC] [test_push] Error: El archivo de service account no contiene JSON válido.
+[26-Apr-2026 00:03:43 UTC] [FcmSender] HTTP 400 | errorCode: INVALID_ARGUMENT | body: {
+  "error": {
+    "code": 400,
+    "message": "The registration token is not a valid FCM registration token",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.firebase.fcm.v1.FcmError",
+        "errorCode": "INVALID_ARGUMENT"
+      }
+    ]
+  }
+}
+
+[26-Apr-2026 00:03:43 UTC] [push_helpers] Token desactivado (id=3, code=INVALID_ARGUMENT)
